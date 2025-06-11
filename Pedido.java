@@ -1,9 +1,10 @@
 public class Pedido extends SQLClass {
+    @Key
     public int id;
     public int clienteId;
-    public String data;
-    public double valorTotal;
-    public String status;
+    public int fornecedorId;
+    public int quantidade;
+    public double valor;
 
     public Pedido() {
         setTableName("PEDIDOS");
@@ -25,27 +26,27 @@ public class Pedido extends SQLClass {
         this.clienteId = clienteId;
     }
 
-    public String getData() {
-        return data;
+    public int getFornecedorId() {
+        return fornecedorId;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setFornecedorId(int fornecedorId) {
+        this.fornecedorId = fornecedorId;
     }
 
-    public double getValorTotal() {
-        return valorTotal;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setValorTotal(double valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public String getStatus() {
-        return status;
+    public double getValor() {
+        return valor;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 } 

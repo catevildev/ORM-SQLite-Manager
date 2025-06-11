@@ -1,4 +1,5 @@
 public class Cliente extends SQLClass {
+    @Key
     public int id;
     public String nome;
     public String email;

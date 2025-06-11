@@ -5,11 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.io.File;
 
 public class Database {
     // Conexão com o banco de dados SQLite
     private static Connection connect() {
-        String url = "jdbc:sqlite:db\\data.db"; // Isso define a URL
+        // Garantir que o diretório db existe
+        File dbDir = new File("db");
+        if (!dbDir.exists()) {
+            dbDir.mkdir();
+        }
+
+        String url = "jdbc:sqlite:db/data.db";
         Connection connection = null;
         try {
             connection = DriverManager.getConnection(url);
@@ -80,5 +87,43 @@ public class Database {
         }
 
         return ok;
+    }
+
+    public static boolean criarTabela(Class<?> classe) {
+        try {
+            // Criar uma instância da classe para obter o nome da tabela
+            SQLClass instance = (SQLClass) classe.newInstance();
+            String tableName = instance.getTableName();
+            
+            String sql = "CREATE TABLE IF NOT EXISTS " + tableName + " (";
+            Field[] fields = classe.getDeclaredFields();
+            for (int i = 0; i < fields.length; i++) {
+                Field field = fields[i];
+                String fieldType = field.getType().getSimpleName();
+                
+                // Converter tipos Java para tipos SQLite
+                if (fieldType.equals("String")) {
+                    fieldType = "TEXT";
+                } else if (fieldType.equals("int")) {
+                    fieldType = "INTEGER";
+                } else if (fieldType.equals("double")) {
+                    fieldType = "REAL";
+                }
+                
+                sql += field.getName() + " " + fieldType;
+                
+                // Adicionar vírgula se não for o último campo
+                if (i < fields.length - 1) {
+                    sql += ", ";
+                }
+            }
+            sql += ")";
+            
+            System.out.println("Criando tabela: " + sql);
+            return executeSQL(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }

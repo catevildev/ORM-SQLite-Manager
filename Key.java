@@ -1,10 +1,13 @@
+import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 // Essa linha define por quanto tempo a anotação @Key estará disponível
 // Essa anotação estará disponível em tempo de execução
 @Retention(RetentionPolicy.RUNTIME)
-@interface Key {
+@Target(ElementType.FIELD)
+public @interface Key {
     /*
      * Essa linha cria uma nova anotação personalizada chamada @Key
      *

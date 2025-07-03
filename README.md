@@ -1,7 +1,7 @@
-# OCR-SQLite-Manager
+# ORM-SQLite-Manager
 
 ## 📋 Descrição
-OCR-SQLite-Manager é um sistema de gerenciamento de dados que integra funcionalidades de OCR (Optical Character Recognition) com um banco de dados SQLite. O projeto implementa o padrão Factory para manipulação de registros, oferecendo uma interface robusta e flexível para operações CRUD (Create, Read, Update, Delete).
+OCR-SQLite-Manager é um sistema de gerenciamento de dados que integra funcionalidades de ORM (Object-Relational Mapping, ou Mapeamento Objeto-Relacional) com um banco de dados SQLite. O projeto implementa o padrão Factory para manipulação de registros, oferecendo uma interface robusta e flexível para operações CRUD (Create, Read, Update, Delete).
 
 ## 🚀 Funcionalidades
 - Integração com banco de dados SQLite

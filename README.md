@@ -17,7 +17,7 @@ OCR-SQLite-Manager é um sistema de gerenciamento de dados que integra funcional
 
 ## 📦 Estrutura do Projeto
 ```
-OCR-SQLite-Manager/
+ORM-SQLite-Manager/
 ├── db/
 │   └── data.db
 ├── src/
